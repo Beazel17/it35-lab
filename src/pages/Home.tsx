@@ -8,15 +8,15 @@ import {
       IonToolbar 
   } from '@ionic/react';
   
-  const Page1: React.FC = () => {
+  const Home: React.FC = () => {
     return (
       <IonPage>
         <IonHeader>
           <IonToolbar>
             <IonButtons slot='start'>
-              <IonMenuButton></IonMenuButton>
+              <IonMenuButton ></IonMenuButton>
             </IonButtons>
-            <IonTitle>Page1</IonTitle>
+            <IonTitle>Home</IonTitle>
           </IonToolbar>
         </IonHeader>
         <IonContent fullscreen>
@@ -25,4 +25,4 @@ import {
     );
   };
   
-  export default Page1;
+  export default Home;
