@@ -9,7 +9,7 @@ import {
     IonToolbar, 
     useIonRouter
 } from '@ionic/react';
-
+import './css/Login.css';
 const Login: React.FC = () => {
   const navigation = useIonRouter();
   const doLogin = () => {

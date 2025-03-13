@@ -1,0 +1,7 @@
+.login-content {
+    background: linear-gradient(135deg, #74b9ff, #a29bfe); /* Gradient background */
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
