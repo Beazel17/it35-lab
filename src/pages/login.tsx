@@ -1,69 +1,124 @@
-import React, { useState } from 'react';
-import {
+import { 
+  IonAlert,
   IonButton,
-  IonContent,
-  IonHeader,
-  IonInput,
-  IonItem,
-  IonLabel,
-  IonPage,
-  IonTitle,
-  IonToolbar,
+  IonContent, 
+  IonInput, 
+  IonInputPasswordToggle,  
+  IonPage,  
+  IonToast,  
   useIonRouter
 } from '@ionic/react';
-import './css/Login.css';
+
+import { useState } from 'react';
 
 const Login: React.FC = () => {
+  const navigation = useIonRouter();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const navigation = useIonRouter();
+  const [showAlert, setShowAlert] = useState(false);
+  const [errorMessage, setErrorMessage] = useState('');
+  const [showToast, setShowToast] = useState(false);
 
-  const doLogin = () => {
-    if (email && password) {
-      navigation.push('/it35-lab/app', 'forward', 'replace');
+  const doLogin = async () => {
+    // Placeholder for actual login logic, if any
+    // You can replace this with API call and authentication logic
+    if (email === "test@domain.com" && password === "password") {
+      setShowToast(true);
+      setTimeout(() => {
+        navigation.push('/it35-lab/app', 'forward', 'replace');
+      }, 1500);
     } else {
-      alert("Please fill in both email and password.");
+      setErrorMessage("Invalid email or password.");
+      setShowAlert(true);
     }
-  };
-
-  const goToRegister = () => {
-    navigation.push('/register', 'forward', 'replace');
   };
 
   return (
     <IonPage>
-      <IonHeader>
-        <IonToolbar>
-          <IonTitle>Login</IonTitle>
-        </IonToolbar>
-      </IonHeader>
-      <IonContent className='ion-padding login-content'>
-        <div className="login-form">
-          <IonItem>
-            <IonLabel position="floating">Email</IonLabel>
-            <IonInput
-              value={email}
-              onIonChange={(e) => setEmail(e.detail.value!)}
-              type="email"
-              required
-            />
-          </IonItem>
-          <IonItem>
-            <IonLabel position="floating">Password</IonLabel>
-            <IonInput
-              value={password}
-              onIonChange={(e) => setPassword(e.detail.value!)}
-              type="password"
-              required
-            />
-          </IonItem>
+      <IonContent className='ion-padding'>
+        <div
+          style={{
+            display: 'flex',
+            flexDirection: 'column',
+            alignItems: 'center',
+            justifyContent: 'center',
+            marginTop: '20%',
+          }}
+        >
+          <h1
+            style={{
+              fontWeight: 'bold',
+              marginBottom: '20px',
+            }}
+          >
+            LOGIN HERE
+          </h1>
 
-          <IonButton onClick={doLogin} expand="full" className="login-button">
+          <IonInput
+            label="Email"
+            labelPlacement="floating"
+            fill="outline"
+            type="email"
+            placeholder="Enter Email"
+            value={email}
+            onIonChange={(e) => setEmail(e.detail.value!)}
+            style={{ width: '100%', marginBottom: '15px' }}
+          />
+          <IonInput
+            style={{
+              width: '100%',
+              marginBottom: '25px',
+            }}
+            fill="outline"
+            type="password"
+            placeholder="Password"
+            value={password}
+            onIonChange={(e) => setPassword(e.detail.value!)}
+          >
+            <IonInputPasswordToggle slot="end" />
+          </IonInput>
+
+          <IonButton
+            style={{
+              marginBottom: '15px',
+            }}
+            onClick={doLogin}
+            expand="full"
+            shape="round"
+            color="primary"
+          >
             Login
           </IonButton>
-          <IonButton onClick={goToRegister} expand="full" color="light" className="register-button">
-            Register
+
+          {/* Register Button */}
+          <IonButton
+            routerLink="/it35-lab/register"
+            expand="full"
+            fill="clear"
+            shape="round"
+            style={{
+              color: '#007bff',
+            }}
+          >
+            Don't have an account? Register here
           </IonButton>
+
+          {/* IonAlert for displaying login errors */}
+          <IonAlert
+            isOpen={showAlert}
+            onDidDismiss={() => setShowAlert(false)}
+            header="Login Failed"
+            message={errorMessage}
+            buttons={['OK']}
+          />
+          <IonToast
+            isOpen={showToast}
+            onDidDismiss={() => setShowToast(false)}
+            message="Login successful! Redirecting..."
+            duration={1500}
+            position="top"
+            color="primary"
+          />
         </div>
       </IonContent>
     </IonPage>
