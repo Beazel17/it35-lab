@@ -12,23 +12,25 @@ const Register: React.FC = () => {
   const [showAlert, setShowAlert] = useState(false);
 
   const doRegister = async () => {
+    // Basic validation for empty fields
     if (!email || !password || !confirmPassword) {
       setErrorMessage('Please fill in all fields.');
       setShowAlert(true);
       return;
     }
 
+    // Check if password and confirm password match
     if (password !== confirmPassword) {
       setErrorMessage('Passwords do not match.');
       setShowAlert(true);
       return;
     }
 
+    // Simulate registration success
     setShowToast(true);
     setTimeout(() => {
-      navigation.push('/it35-lab', 'back', 'replace'); 
+      navigation.push('/it35-lab', 'back', 'replace'); // Redirect to login page after successful registration
     }, 1500);
-
   };
 
   return (
@@ -92,7 +94,19 @@ const Register: React.FC = () => {
           >
             Register
           </IonButton>
-
+          <>
+          <IonButton
+            routerLink="/it35-lab"
+            expand="full"
+            fill="clear"
+            shape="round"
+            style={{
+              color: '#007bff',
+            }}
+          >
+            Go back to "Login"
+          </IonButton>
+    </>
           {/* IonToast for registration success */}
           <IonToast
             isOpen={showToast}
