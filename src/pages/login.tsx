@@ -20,18 +20,26 @@ const Login: React.FC = () => {
   const [showToast, setShowToast] = useState(false);
 
   const doLogin = async () => {
-    // Placeholder for actual login logic, if any
-    // You can replace this with API call and authentication logic
-    if (email === "test@domain.com" && password === "password") {
-      setShowToast(true);
-      setTimeout(() => {
-        navigation.push('/it35-lab/app', 'forward', 'replace');
-      }, 1500);
-    } else {
-      setErrorMessage("Invalid email or password.");
-      setShowAlert(true);
+    const emailPattern = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
+    if (!email.match(emailPattern)) {
+        setErrorMessage('Please enter a valid email address.');
+        setShowAlert(true);
+        return; 
     }
+
+    if (!password) {
+        setErrorMessage('Password cannot be empty.');
+        setShowAlert(true);
+        return;
+    }
+
+    setShowAlert(false);
+    setShowToast(true);
+    setTimeout(() => {
+        navigation.push('/it35-lab/app', 'forward', 'replace');
+    }, 1500);
   };
+
 
   return (
     <IonPage>
