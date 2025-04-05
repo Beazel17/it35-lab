@@ -129,7 +129,7 @@ const Login: React.FC = () => {
             LOGIN
           </IonButton>
           <IonButton onClick={doSignup} expand="full" color="secondary" style={{ width: '100%' }}>
-            SIGNUP
+            DONT HAVE AN ACCOUNT? REGISTER HERE
           </IonButton>
         </div>
       </IonContent>
