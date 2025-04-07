@@ -23,7 +23,7 @@ import {
               <IonMenuButton></IonMenuButton>
             </IonButtons>
             <IonTitle>Feed</IonTitle>
-          </IonToolbar>
+          </IonToolbar> 
         </IonHeader>
         <IonContent fullscreen>
         <IonCard>
