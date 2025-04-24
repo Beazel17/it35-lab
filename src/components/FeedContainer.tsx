@@ -67,7 +67,7 @@ const FeedContainer = () => {
   
     // Insert post with avatar URL
     const { data, error } = await supabase
-      .from('posts')
+      .from('posts') 
       .insert([
         { post_content: postContent, user_id: user.id, username, avatar_url: avatarUrl }
       ])
