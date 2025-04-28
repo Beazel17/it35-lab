@@ -105,16 +105,19 @@ const Register: React.FC = () => {
                     justifyContent: 'center',
                     alignItems: 'center',
                     height: '100vh',
-                    background: 'linear-gradient(to bottom right, #5f72be, #9921e8)',
+                    backgroundImage: 'url("https://snworksceo.imgix.net/jst/3c144098-e32a-4f2b-97e7-87bd99e5c042.sized-1000x1000.jpg?w=1750)', // Joker background
+                    backgroundSize: 'cover',
+                    backgroundPosition: 'center',
+                    backgroundRepeat: 'no-repeat',
                     padding: '16px'
                 }}>
                     <div style={{
                         width: '100%',
                         maxWidth: '400px',
-                        backgroundColor: '#fff',
+                        backgroundColor: 'rgba(255, 255, 255, 0.9)', // transparent white
                         borderRadius: '20px',
                         padding: '30px',
-                        boxShadow: '0 8px 20px rgba(0,0,0,0.2)',
+                        boxShadow: '0 8px 20px rgba(0,0,0,0.5)',
                         display: 'flex',
                         flexDirection: 'column',
                         alignItems: 'center'
